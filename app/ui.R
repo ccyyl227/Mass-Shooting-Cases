@@ -5,9 +5,11 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("year", "Year", min = min(massshootings$year), max = max(massshootings$year), value = min(massshootings$year), step = 1)
-    ),
+      
+  ),
     mainPanel(
-      plotOutput("massshootings_plot")
+      plotOutput("massshootings_plot"),
+      plotOutput("map")
     )
   )
 )
