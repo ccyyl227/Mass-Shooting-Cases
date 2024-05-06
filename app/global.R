@@ -12,11 +12,10 @@ cases_by_year <- massshootings |>
 states <-massshootings |>
   group_by(year,location...2)|>
   summarise(cases_total = n())
-states <- mutate(states, state = str_split(location...2, ", ")[[1]][2])
+states <- states %>% mutate(state = map_chr(str_split(location...2, ", "), pluck, 2))
 
 
 us_states <- map_data("state")
 states$region<- tolower(states$state)
-us_states_mass <- left_join(us_states,states)
 
 
